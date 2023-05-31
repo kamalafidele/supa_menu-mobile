@@ -1,7 +1,7 @@
 import { create } from 'apisauce';
 
 const apiClient = create({
-    baseURL: 'http://192.168.8.168:7500/api',
+    baseURL: 'https://supa-menu-backend.onrender.com/api',
     timeout: 10000,
 });
 
