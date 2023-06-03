@@ -88,7 +88,7 @@ function CheckoutScreen({ navigation }) {
 
                 <View style={{ marginTop: 30 }}>
                     <Text style={{ textAlign: 'center', color: colors.GRAY, marginBottom: 10 }}>We will send you an order details to your email after the successfull payment</Text>
-                    <AppButton title={'Pay for the order'} color={colors.GREEN} onPress={() => console.log('pay')}/>
+                    <AppButton title={'Pay for the order'} color={colors.GREEN} onPress={() => navigation.navigate('invoice') }/>
                 </View>
             </View>
         </Screen>

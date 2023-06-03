@@ -25,11 +25,11 @@ function MenuScreen({ navigation }) {
                 </View>
                 <Text style={styles.headers}>menu</Text>
                 <View style={{ paddingHorizontal: 50 }}>
-                    <RightDirection txt={'Appetizer'} txtSize={28} onPress={() => navigation.navigate('order') }/>
-                    <RightDirection txt={'Starter'} txtSize={28} onPress={() => navigation.navigate('order') } />
-                    <RightDirection txt={'Main'} txtSize={28} onPress={() => navigation.navigate('order') } />
-                    <RightDirection txt={'Dessert'} txtSize={28} onPress={() => navigation.navigate('order') } />
-                    <RightDirection txt={'Drink'} txtSize={28} onPress={() => navigation.navigate('order') } />
+                    <RightDirection txt={'Appetizer'} txtSize={28} onPress={() => navigation.navigate('order', { params: { menu_name: 'Appetizer' }, screen: 'RestoItems' }) }/>
+                    <RightDirection txt={'Starter'} txtSize={28} onPress={() => navigation.navigate('order', { params: { menu_name: 'Starter' }, screen: 'RestoItems' }) } />
+                    <RightDirection txt={'Main'} txtSize={28} onPress={() => navigation.navigate('order', { params: { menu_name: 'Main' }, screen: 'RestoItems' }) } />
+                    <RightDirection txt={'Dessert'} txtSize={28} onPress={() => navigation.navigate('order', { params: { menu_name: 'Dessert' }, screen: 'RestoItems' }) } />
+                    <RightDirection txt={'Drink'} txtSize={28} onPress={() => navigation.navigate('order', { params: { menu_name: 'Drink' }, screen: 'RestoItems' }) } />
                 </View>
             </View>
         </Screen>

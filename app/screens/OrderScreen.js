@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Screen from './Screen';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, VirtualizedList } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 import OrderItem from '../components/OrderItem';
-import RightDirection from '../components/RightDirection';
 import AppButton from '../components/AppButton';
 
 const DRINKS = [
@@ -32,7 +31,9 @@ const DRINKS = [
     },
 ];
 
-function OrderScreen({ navigation }) {
+function OrderScreen({ navigation, route }) {
+    const [menu, setMenu] = useState(route.params.menu_name);
+
     let total = 0;
     DRINKS.map((drink) => {
         total += drink.price;
@@ -40,9 +41,9 @@ function OrderScreen({ navigation }) {
 
     return (
         <Screen>
-            <View style={styles.container}>
+            <ScrollView style={styles.container} >
                 <Text style={{ textAlign: 'right', color: colors.BLACK, fontSize: 32 }}>Choose Kigali</Text>
-                <Text style={{ textAlign: 'right', color: colors.PRIMARY, fontSize: 32 }}>Drinks</Text>
+                <Text style={{ textAlign: 'right', color: colors.PRIMARY, fontSize: 32 }}>{ menu + 's'}</Text>
                 <View style={styles.itemsContainer}>
                     <FlatList
                     data={DRINKS}
@@ -61,7 +62,7 @@ function OrderScreen({ navigation }) {
 
                 <TouchableOpacity onPress={() => console.log()}>
                 <View style={styles.moreItems}>
-                    <Text style={{ marginRight: 30, fontSize: 22, color: colors.PRIMARY }}>more drinks</Text>
+                    <Text style={{ marginRight: 30, fontSize: 22, color: colors.PRIMARY, textTransform: 'lowercase' }}>more {menu + 's'}</Text>
                     <MaterialCommunityIcons name='arrow-right' size={35} color={colors.PRIMARY}/>
                 </View>
                 </TouchableOpacity>
@@ -74,14 +75,15 @@ function OrderScreen({ navigation }) {
                 <View style={{ marginVertical: 20 }}>
                     <AppButton title={'Proceed to Checkout'} onPress={() => navigation.navigate('checkout') }/>
                 </View>
-            </View>
+            </ScrollView>
         </Screen>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 12
+        width: '100%',
+        padding: 12,
     },
     itemsContainer: {
         // padding: 10,
