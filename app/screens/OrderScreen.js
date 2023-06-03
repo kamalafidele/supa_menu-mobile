@@ -45,7 +45,17 @@ function OrderScreen({ navigation, route }) {
                 <Text style={{ textAlign: 'right', color: colors.BLACK, fontSize: 32 }}>Choose Kigali</Text>
                 <Text style={{ textAlign: 'right', color: colors.PRIMARY, fontSize: 32 }}>{ menu + 's'}</Text>
                 <View style={styles.itemsContainer}>
-                    <FlatList
+                    { DRINKS.map((drink) => (
+                        <OrderItem 
+                        key={drink.id}
+                        description={drink.description}
+                        imgUrl={drink.imgUrl}
+                        title={drink.title}
+                        price={drink.price}
+                        onPress={(amount) => console.log(amount)}
+                        />
+                    ))}
+                    {/* <FlatList
                     data={DRINKS}
                     keyExtractor={(item) => item.id }
                     renderItem={({item}) => (
@@ -57,7 +67,7 @@ function OrderScreen({ navigation, route }) {
                     onPress={(amount) => console.log(amount)}
                     />
                     )}
-                    />
+                    /> */}
                 </View>
 
                 <TouchableOpacity onPress={() => console.log()}>
